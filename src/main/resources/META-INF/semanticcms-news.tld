@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
+Copyright (C) 2016  AO Industries, Inc.
+	support@aoindustries.com
+	7262 Bull Pen Cir
+	Mobile, AL 36695
+
+This file is part of semanticcms-news-taglib.
+
+semanticcms-news-taglib is free software: you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+semanticcms-news-taglib is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License
+along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<taglib version="2.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+	<description>SemanticCMS newsfeeds in a JSP environment.</description>
+	<display-name>semanticcms-news-taglib</display-name>
+	<!-- TODO: Here and all other *.tld, use Maven to substitute the current version here during build -->
+	<tlib-version>1.0</tlib-version>
+	<short-name>news</short-name>
+	<uri>https://semanticcms.com/semanticcms-news-taglib</uri>
+	<tag>
+		<description><![CDATA[
+			A newsfeed item, used to annotate pages and elements of what
+			changes.  The news entries are not typically directly visible, but 
+			instead are available via news views, RSS feeds, newsletters, Twitter
+			tweets, and such.
+		]]></description>
+		<name>news</name>
+		<tag-class>com.semanticcms.news.taglib.NewsTag</tag-class>
+		<body-content>scriptless</body-content>
+		<attribute>
+			<description><![CDATA[
+				The id used in URL anchors.
+				If not provided, is generated from the label.
+				Must be unique per page.
+				Ids generated from labels will be unique, but may change as page structure changes.
+			]]></description>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The book of the news target book.
+				Defaults to the book of the current JSP file.
+			]]></description>
+			<name>book</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The page-relative path to the news target book.
+				Required when book provided.
+				Defaults to the parent page/element of the news entry when not specified.
+			]]></description>
+			<name>page</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The id of the news target element.
+				Defaults to the parent page/element of the news entry when book, page, and element not specified.
+			]]></description>
+			<name>element</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The view to use for the target element.
+				Defaults to "content" when not specified.
+			]]></description>
+			<name>view</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The title of the news entry.
+				Defaults to the target page title/element label when not specified.
+			]]></description>
+			<name>title</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The optional description of the news entry.
+				A text-only extraction of any body may can be used instead when not specified.
+			]]></description>
+			<name>description</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[
+				The publication date, in ISO 8601 format.  At least YYYY-MM-DD is required,
+				and when time not specified will default to midnight in the current system time zone.
+				Any value accepted by Joda Time DateTime is accepted.
+			]]></description>
+			<name>pubDate</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.Object</type>
+		</attribute>
+	</tag>
+</taglib>

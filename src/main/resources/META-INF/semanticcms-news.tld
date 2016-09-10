@@ -123,4 +123,13 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<type>java.lang.Object</type>
 		</attribute>
 	</tag>
+	<function>
+		<description><![CDATA[
+			Gets all the new items in the given page and below, sorted by pubDate desc, page.
+		]]></description>
+		<name>findAllNews</name>
+		<function-class>com.semanticcms.news.taglib.Functions</function-class>
+		<function-signature>java.util.List findAllNews(com.semanticcms.core.model.Page)</function-signature>
+		<example>${news:findAllNews(page)}</example>
+	</function>
 </taglib>

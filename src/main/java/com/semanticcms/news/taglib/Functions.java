@@ -28,6 +28,7 @@ import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
 import com.semanticcms.core.model.Page;
 import com.semanticcms.news.model.News;
 import com.semanticcms.news.servlet.NewsUtils;
+import com.semanticcms.news.servlet.RssUtils;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;

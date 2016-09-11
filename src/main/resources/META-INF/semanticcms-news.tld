@@ -104,7 +104,6 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				The optional description of the news entry.
-				A text-only extraction of any body may can be used instead when not specified.
 			]]></description>
 			<name>description</name>
 			<required>false</required>

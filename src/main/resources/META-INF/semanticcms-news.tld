@@ -27,7 +27,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<!-- TODO: Here and all other *.tld, use Maven to substitute the current version here during build -->
 	<tlib-version>1.0</tlib-version>
 	<short-name>news</short-name>
-	<uri>https://semanticcms.com/semanticcms-news-taglib</uri>
+	<uri>https://semanticcms.com/news/taglib/</uri>
 	<tag>
 		<description><![CDATA[
 			A newsfeed item, used to annotate pages and elements of what

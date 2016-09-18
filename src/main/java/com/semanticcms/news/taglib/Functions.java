@@ -25,22 +25,21 @@ package com.semanticcms.news.taglib;
 import static com.aoindustries.servlet.filter.FunctionContext.getRequest;
 import static com.aoindustries.servlet.filter.FunctionContext.getResponse;
 import static com.aoindustries.servlet.filter.FunctionContext.getServletContext;
-import com.semanticcms.core.model.Page;
+import com.semanticcms.core.model.PageRef;
 import com.semanticcms.news.model.News;
 import com.semanticcms.news.servlet.NewsUtils;
-import com.semanticcms.news.servlet.RssUtils;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
 final public class Functions {
 
-	public static List<News> findAllNews(Page page) throws ServletException, IOException {
+	public static List<News> findAllNews(PageRef pageRef) throws ServletException, IOException {
 		return NewsUtils.findAllNews(
 			getServletContext(),
 			getRequest(),
 			getResponse(),
-			page
+			pageRef
 		);
 	}
 

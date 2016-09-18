@@ -128,7 +128,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		]]></description>
 		<name>findAllNews</name>
 		<function-class>com.semanticcms.news.taglib.Functions</function-class>
-		<function-signature>java.util.List findAllNews(com.semanticcms.core.model.Page)</function-signature>
-		<example>${news:findAllNews(page)}</example>
+		<function-signature>java.util.List findAllNews(com.semanticcms.core.model.PageRef)</function-signature>
+		<example>${news:findAllNews(pageRef)}</example>
 	</function>
 </taglib>

@@ -47,7 +47,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>id</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
@@ -57,7 +57,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>book</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
@@ -68,7 +68,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>page</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
@@ -78,7 +78,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>element</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
@@ -88,7 +88,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>view</name>
 			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
@@ -118,7 +118,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			]]></description>
 			<name>pubDate</name>
 			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
+			<rtexprvalue>false</rtexprvalue>
 			<type>java.lang.Object</type>
 		</attribute>
 	</tag>

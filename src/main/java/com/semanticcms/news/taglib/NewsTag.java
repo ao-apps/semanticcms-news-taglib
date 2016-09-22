@@ -77,11 +77,15 @@ public class NewsTag extends ElementTag<News> {
 		element.setDescription(description);
 	}
 
-	public void setPubDate(Object pubDate) throws IOException {
-		element.setPubDate(
-			(pubDate instanceof ReadableDateTime) ? (ReadableDateTime)pubDate
-			: Coercion.isEmpty(pubDate) ? null
-			: new DateTime(pubDate));
+	public void setPubDate(Object pubDate) throws JspTagException {
+		try {
+			element.setPubDate(
+				(pubDate instanceof ReadableDateTime) ? (ReadableDateTime)pubDate
+				: Coercion.isEmpty(pubDate) ? null
+				: new DateTime(pubDate));
+		} catch(IOException e) {
+			throw new JspTagException(e);
+		}
 	}
 
 	private BufferResult writeMe;

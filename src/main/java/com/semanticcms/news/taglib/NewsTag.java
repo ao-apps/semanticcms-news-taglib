@@ -29,6 +29,8 @@ import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.io.buffer.SegmentedWriter;
 import com.aoindustries.servlet.filter.TempFileContext;
+import static com.aoindustries.taglib.AttributeUtils.resolveValue;
+import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.SemanticCMS;
@@ -37,6 +39,7 @@ import com.semanticcms.news.model.News;
 import com.semanticcms.news.servlet.impl.NewsImpl;
 import java.io.IOException;
 import java.io.Writer;
+import javax.el.ELContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,51 +51,68 @@ import org.joda.time.ReadableDateTime;
 
 public class NewsTag extends ElementTag<News> {
 
-	public NewsTag() {
-		super(new News());
-		element.setView(SemanticCMS.DEFAULT_VIEW_NAME);
+	private Object book;
+	public void setBook(Object book) {
+		this.book = book;
 	}
 
-	public void setBook(String book) {
-		element.setBook(book);
+	private Object page;
+	public void setPage(Object page) {
+		this.page = page;
 	}
 
-	public void setPage(String page) {
-		element.setTargetPage(page);
+	private Object element;
+	public void setElement(Object element) {
+		this.element = element;
 	}
 
-	public void setElement(String element) {
-		this.element.setElement(element);
+	private Object view;
+	public void setView(Object view) {
+		this.view = view;
 	}
 
-	public void setView(String view) {
-		element.setView(view==null || view.isEmpty() ? SemanticCMS.DEFAULT_VIEW_NAME : view);
+	private Object title;
+	public void setTitle(Object title) {
+		this.title = title;
 	}
 
-	public void setTitle(String title) {
-		element.setTitle(title);
+	private Object description;
+	public void setDescription(Object description) {
+		this.description = description;
 	}
 
-	public void setDescription(String description) {
-		element.setDescription(description);
+	private Object pubDate;
+	public void setPubDate(Object pubDate) {
+		this.pubDate = pubDate;
 	}
 
-	public void setPubDate(Object pubDate) throws JspTagException {
-		try {
-			element.setPubDate(
-				(pubDate instanceof ReadableDateTime) ? (ReadableDateTime)pubDate
-				: Coercion.isEmpty(pubDate) ? null
-				: new DateTime(pubDate));
-		} catch(IOException e) {
-			throw new JspTagException(e);
-		}
+	@Override
+	protected News createElement() {
+		return new News();
+	}
+
+	@Override
+	protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
+		super.evaluateAttributes(news, elContext);
+		news.setBook(resolveValue(book, String.class, elContext));
+		news.setTargetPage(resolveValue(page, String.class, elContext));
+		news.setElement(resolveValue(element, String.class, elContext));
+		String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
+		if(viewStr == null) viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
+		news.setView(viewStr);
+		news.setTitle(resolveValue(title, String.class, elContext));
+		news.setDescription(resolveValue(description, String.class, elContext));
+		news.setPubDate(
+			(pubDate instanceof ReadableDateTime) ? (ReadableDateTime)pubDate
+			: Coercion.isEmpty(pubDate) ? null
+			: new DateTime(pubDate));
 	}
 
 	private BufferResult writeMe;
 	@Override
-	protected void doBody(CaptureLevel captureLevel) throws JspException, IOException {
+	protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
 		try {
-			super.doBody(captureLevel);
+			super.doBody(news, captureLevel);
 			final PageContext pageContext = (PageContext)getJspContext();
 			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
 			BufferWriter capturedOut;
@@ -118,7 +138,7 @@ public class NewsTag extends ElementTag<News> {
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
 					capturedOut,
-					element
+					news
 				);
 			} finally {
 				if(capturedOut != null) capturedOut.close();

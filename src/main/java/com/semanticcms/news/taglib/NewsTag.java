@@ -40,6 +40,7 @@ import com.semanticcms.news.servlet.impl.NewsImpl;
 import java.io.IOException;
 import java.io.Writer;
 import javax.el.ELContext;
+import javax.el.ValueExpression;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,33 +52,33 @@ import org.joda.time.ReadableDateTime;
 
 public class NewsTag extends ElementTag<News> {
 
-	private Object book;
-	public void setBook(Object book) {
+	private ValueExpression book;
+	public void setBook(ValueExpression book) {
 		this.book = book;
 	}
 
-	private Object page;
-	public void setPage(Object page) {
+	private ValueExpression page;
+	public void setPage(ValueExpression page) {
 		this.page = page;
 	}
 
-	private Object element;
-	public void setElement(Object element) {
+	private ValueExpression element;
+	public void setElement(ValueExpression element) {
 		this.element = element;
 	}
 
-	private Object view;
-	public void setView(Object view) {
+	private ValueExpression view;
+	public void setView(ValueExpression view) {
 		this.view = view;
 	}
 
-	private Object title;
-	public void setTitle(Object title) {
+	private ValueExpression title;
+	public void setTitle(ValueExpression title) {
 		this.title = title;
 	}
 
-	private Object description;
-	public void setDescription(Object description) {
+	private ValueExpression description;
+	public void setDescription(ValueExpression description) {
 		this.description = description;
 	}
 

@@ -32,7 +32,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 
 	<groupId>com.semanticcms</groupId>
 	<artifactId>semanticcms-news-taglib</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>SemanticCMS News Taglib</name>
@@ -44,7 +44,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<connection>scm:git:git://github.com/aoindustries/semanticcms-news-taglib.git</connection>
 		<developerConnection>scm:git:git@github.com:aoindustries/semanticcms-news-taglib.git</developerConnection>
 		<url>http://github.com/aoindustries/semanticcms-news-taglib</url>
-		<tag>semanticcms-news-taglib-1.1.1</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<profiles>

@@ -124,6 +124,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				The publication date, in ISO 8601 format.  At least YYYY-MM-DD is required,
 				and when time not specified will default to midnight in the current system time zone.
+				A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
 				Any value accepted by Joda Time DateTime is accepted.
 			]]></description>
 			<name>pubDate</name>

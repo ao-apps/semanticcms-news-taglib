@@ -22,7 +22,6 @@
  */
 package com.semanticcms.news.taglib;
 
-import com.aoindustries.encoding.Coercion;
 import com.aoindustries.io.TempFileList;
 import com.aoindustries.io.buffer.AutoTempFileWriter;
 import com.aoindustries.io.buffer.BufferResult;
@@ -33,6 +32,7 @@ import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.taglib.ElementTag;
 import com.semanticcms.news.model.News;
@@ -47,8 +47,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
-import org.joda.time.DateTime;
-import org.joda.time.ReadableDateTime;
 
 public class NewsTag extends ElementTag<News> {
 
@@ -103,10 +101,7 @@ public class NewsTag extends ElementTag<News> {
 		news.setView(viewStr);
 		news.setTitle(resolveValue(title, String.class, elContext));
 		news.setDescription(resolveValue(description, String.class, elContext));
-		news.setPubDate(
-			(pubDate instanceof ReadableDateTime) ? (ReadableDateTime)pubDate
-			: Coercion.isEmpty(pubDate) ? null
-			: new DateTime(pubDate));
+		news.setPubDate(PageUtils.toDateTime(pubDate));
 	}
 
 	private BufferResult writeMe;

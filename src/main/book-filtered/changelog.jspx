@@ -58,7 +58,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.1.1"
-			dateCreated="2016-10-20T19:15:00-0500"
+			datePublished="2016-10-20T19:15:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -72,7 +72,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.1.0"
-			dateCreated="2016-10-04T22:41:00-0500"
+			datePublished="2016-10-04T22:41:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"
@@ -93,7 +93,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<changelog:release
 			projectName="@{project.name}"
 			version="1.0"
-			dateCreated="2016-09-11T16:47:00-0500"
+			datePublished="2016-09-11T16:47:00-0500"
 			groupId="@{project.groupId}"
 			artifactId="@{project.artifactId}"
 			scmUrl="@{project.scm.url}"

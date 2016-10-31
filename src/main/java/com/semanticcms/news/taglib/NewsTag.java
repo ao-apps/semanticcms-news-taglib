@@ -80,8 +80,8 @@ public class NewsTag extends ElementTag<News> {
 		this.description = description;
 	}
 
-	private Object pubDate;
-	public void setPubDate(Object pubDate) {
+	private ValueExpression pubDate;
+	public void setPubDate(ValueExpression pubDate) {
 		this.pubDate = pubDate;
 	}
 
@@ -101,7 +101,7 @@ public class NewsTag extends ElementTag<News> {
 		news.setView(viewStr);
 		news.setTitle(resolveValue(title, String.class, elContext));
 		news.setDescription(resolveValue(description, String.class, elContext));
-		news.setPubDate(PageUtils.toDateTime(pubDate));
+		news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
 	}
 
 	private BufferResult writeMe;

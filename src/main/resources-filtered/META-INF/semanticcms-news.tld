@@ -27,8 +27,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	version="2.1">
 	<description>SemanticCMS newsfeeds in a JSP environment.</description>
 	<display-name>semanticcms-news-taglib</display-name>
-	<!-- TODO: Here and all other *.tld, use Maven to substitute the current version here during build -->
-	<tlib-version>1.0</tlib-version>
+	<tlib-version>
+		<!-- Release: @{project.version} -->
+		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
+	</tlib-version>
 	<short-name>news</short-name>
 	<uri>https://semanticcms.com/news/taglib/</uri>
 	<tag>

@@ -25,7 +25,9 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
-	<description>@{project.description}</description>
+	<description><![CDATA[
+		<p>@{project.description}</p>
+	]]></description>
 	<display-name>@{project.name}</display-name>
 	<tlib-version>
 		<!-- Release: @{project.version} -->
@@ -35,20 +37,24 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<uri>@{project.url}</uri>
 	<tag>
 		<description><![CDATA[
-			A newsfeed item, used to annotate pages and elements of what
-			changes.  The news entries are not typically directly visible, but 
-			instead are available via news views, RSS feeds, newsletters, Twitter
-			tweets, and such.
+			<p>
+				A newsfeed item, used to annotate pages and elements of what
+				changes.  The news entries are not typically directly visible, but 
+				instead are available via news views, RSS feeds, newsletters, Twitter
+				tweets, and such.
+			</p>
 		]]></description>
 		<name>news</name>
 		<tag-class>com.semanticcms.news.taglib.NewsTag</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<description><![CDATA[
-				The id used in URL anchors.
-				If not provided, is generated from the label.
-				Must be unique per page.
-				Ids generated from labels will be unique, but may change as page structure changes.
+				<p>
+					The id used in URL anchors.
+					If not provided, is generated from the label.
+					Must be unique per page.
+					Ids generated from labels will be unique, but may change as page structure changes.
+				</p>
 			]]></description>
 			<name>id</name>
 			<required>false</required>
@@ -58,8 +64,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The book of the news target book.
-				Defaults to the book of the current JSP file.
+				<p>
+					The book of the news target book.
+					Defaults to the book of the current JSP file.
+				</p>
 			]]></description>
 			<name>book</name>
 			<required>false</required>
@@ -69,9 +77,11 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The page-relative path to the news target book.
-				Required when book provided.
-				Defaults to the parent page/element of the news entry when not specified.
+				<p>
+					The page-relative path to the news target book.
+					Required when book provided.
+					Defaults to the parent page/element of the news entry when not specified.
+				</p>
 			]]></description>
 			<name>page</name>
 			<required>false</required>
@@ -81,8 +91,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The id of the news target element.
-				Defaults to the parent page/element of the news entry when book, page, and element not specified.
+				<p>
+					The id of the news target element.
+					Defaults to the parent page/element of the news entry when book, page, and element not specified.
+				</p>
 			]]></description>
 			<name>element</name>
 			<required>false</required>
@@ -92,8 +104,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The view to use for the target element.
-				Defaults to "content" when not specified.
+				<p>
+					The view to use for the target element.
+					Defaults to "content" when not specified.
+				</p>
 			]]></description>
 			<name>view</name>
 			<required>false</required>
@@ -103,8 +117,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The title of the news entry.
-				Defaults to the target page title/element label when not specified.
+				<p>
+					The title of the news entry.
+					Defaults to the target page title/element label when not specified.
+				</p>
 			]]></description>
 			<name>title</name>
 			<required>false</required>
@@ -114,7 +130,9 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The optional description of the news entry.
+				<p>
+					The optional description of the news entry.
+				</p>
 			]]></description>
 			<name>description</name>
 			<required>false</required>
@@ -124,10 +142,12 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		</attribute>
 		<attribute>
 			<description><![CDATA[
-				The publication date, in ISO 8601 format.  At least YYYY-MM-DD is required,
-				and when time not specified will default to midnight in the current system time zone.
-				A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-				Any value accepted by Joda Time DateTime is accepted.
+				<p>
+					The publication date, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					and when time not specified will default to midnight in the current system time zone.
+					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+					Any value accepted by Joda Time DateTime is accepted.
+				</p>
 			]]></description>
 			<name>pubDate</name>
 			<required>true</required>
@@ -138,7 +158,9 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	</tag>
 	<function>
 		<description><![CDATA[
-			Gets all the new items in the given page and below, sorted by pubDate desc, page.
+			<p>
+				Gets all the new items in the given page and below, sorted by pubDate desc, page.
+			</p>
 		]]></description>
 		<name>findAllNews</name>
 		<function-class>com.semanticcms.news.taglib.Functions</function-class>

@@ -165,6 +165,6 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<name>findAllNews</name>
 		<function-class>com.semanticcms.news.taglib.Functions</function-class>
 		<function-signature>java.util.List findAllNews(com.semanticcms.core.model.Page)</function-signature>
-		<example>${news:findAllNews(page)}</example>
+		<example><![CDATA[<pre>${news:findAllNews(page)}</pre>]]></example>
 	</function>
 </taglib>

@@ -38,6 +38,8 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 	<properties>
 		<shortTitle>Taglib</shortTitle>
 		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/news/">SemanticCMS newsfeeds</a> in a JSP environment.]]></description.html>
+		<javadoc.taglibReference><![CDATA[<li><a target="_top" href="${project.url}semanticcms-news.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
+		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
 	</properties>
 
 	<name>SemanticCMS News Taglib</name>
@@ -65,7 +67,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 							<configuration>
 								<links>
 									<link>https://docs.oracle.com/javaee/6/api/</link>
-									<link>http://www.joda.org/joda-time/apidocs/</link>
+									<link>${jodaTimeApidocs}</link>
 									<link>https://aoindustries.com/ao-encoding/apidocs/</link>
 									<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
 									<link>https://aoindustries.com/ao-servlet-filter/apidocs/</link>

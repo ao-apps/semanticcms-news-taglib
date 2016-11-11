@@ -26,7 +26,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
 	<description><![CDATA[
-		<p>@{project.description}</p>
+		<p>@{description.html}</p>
 	]]></description>
 	<display-name>@{project.name}</display-name>
 	<tlib-version>
@@ -106,7 +106,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 			<description><![CDATA[
 				<p>
 					The view to use for the target element.
-					Defaults to "content" when not specified.
+					Defaults to <code>content</code> when not specified.
 				</p>
 			]]></description>
 			<name>view</name>
@@ -143,10 +143,14 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<attribute>
 			<description><![CDATA[
 				<p>
-					The publication date, in ISO 8601 format.  At least YYYY-MM-DD is required,
+					The publication date in <a href="http://www.iso.org/iso/home/standards/iso8601.htm">ISO 8601</a> format.
+				</p>
+				<p>
+					At least <code>YYYY-MM-DD</code> is required,
 					and when time not specified will default to midnight in the current system time zone.
 					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time DateTime is accepted.
+					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+					is accepted.
 				</p>
 			]]></description>
 			<name>pubDate</name>
@@ -159,7 +163,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<function>
 		<description><![CDATA[
 			<p>
-				Gets all the new items in the given page and below, sorted by pubDate desc, page.
+				Gets all the new items in the given page and below, ordered by <code>pubDate desc, page</code>.
 			</p>
 		]]></description>
 		<name>findAllNews</name>

@@ -31,10 +31,6 @@ import java.util.Map;
  */
 public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
-	private static final String TLD_BOOK = "/news/taglib";
-	private static final String TLD_PATH = "/semanticcms-news.tld";
-	static final String TLD_SERVLET_PATH = TLD_BOOK + TLD_PATH;
-
 	private static final Map<String,String> additionalApiLinks = new LinkedHashMap<String,String>();
 	static {
 		additionalApiLinks.put("com.semanticcms.core.model.", "https://semanticcms.com/core/model/apidocs/");
@@ -45,8 +41,8 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 		super(
 			"News Taglib Reference",
 			"Taglib Reference",
-			TLD_BOOK,
-			TLD_PATH,
+			"/news/taglib",
+			"/semanticcms-news.tld",
 			"https://docs.oracle.com/javase/6/docs/api/",
 			"https://docs.oracle.com/javaee/6/api/",
 			additionalApiLinks

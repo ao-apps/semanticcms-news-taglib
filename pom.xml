@@ -37,6 +37,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 	<packaging>jar</packaging>
 
 	<properties>
+		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
 		<javadoc.breadcrumbs><![CDATA[<a target="_top" href="https://semanticcms.com/">SemanticCMS</a>
 / <a target="_top" href="https://semanticcms.com/news/">News</a>
 / <a target="_top" href="${project.url}">${shortTitle}</a>]]></javadoc.breadcrumbs>

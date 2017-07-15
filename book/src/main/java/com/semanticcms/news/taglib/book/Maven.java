@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,32 +22,23 @@
  */
 package com.semanticcms.news.taglib.book;
 
-import com.semanticcms.tagreference.TagReferenceInitializer;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.aoindustries.util.PropertiesUtils;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author  AO Industries, Inc.
  */
-public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
+class Maven {
 
-	private static final Map<String,String> additionalApiLinks = new LinkedHashMap<String,String>();
+	static final Properties properties;
 	static {
-		// Self
-		additionalApiLinks.put("com.semanticcms.news.taglib.", Maven.properties.getProperty("documented.url") + "apidocs/");
-		// Dependencies
-		additionalApiLinks.put("com.semanticcms.core.model.", "https://semanticcms.com/core/model/apidocs/");
+		try {
+			properties = PropertiesUtils.loadFromResource(Maven.class, "Maven.properties");
+		} catch(IOException e) {
+			throw new ExceptionInInitializerError(e);
+		}
 	}
 
-	public SemanticCmsNewsTldInitializer() {
-		super(
-			"News Taglib Reference",
-			"Taglib Reference",
-			"/news/taglib",
-			"/semanticcms-news.tld",
-			Maven.properties.getProperty("javac.link.javaApi.jdk16"),
-			Maven.properties.getProperty("javac.link.javaeeApi.6"),
-			additionalApiLinks
-		);
-	}
+	private Maven() {}
 }

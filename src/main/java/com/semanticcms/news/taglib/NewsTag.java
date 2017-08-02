@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016  AO Industries, Inc.
+ * Copyright (C) 2016, 2017  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -50,6 +50,11 @@ import javax.servlet.jsp.PageContext;
 
 public class NewsTag extends ElementTag<News> {
 
+	private ValueExpression domain;
+	public void setDomain(ValueExpression domain) {
+		this.domain = domain;
+	}
+
 	private ValueExpression book;
 	public void setBook(ValueExpression book) {
 		this.book = book;
@@ -93,6 +98,7 @@ public class NewsTag extends ElementTag<News> {
 	@Override
 	protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
 		super.evaluateAttributes(news, elContext);
+		news.setDomain(resolveValue(domain, String.class, elContext));
 		news.setBook(resolveValue(book, String.class, elContext));
 		news.setTargetPage(resolveValue(page, String.class, elContext));
 		news.setElement(resolveValue(element, String.class, elContext));

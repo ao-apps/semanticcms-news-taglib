@@ -124,7 +124,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 			<artifactId>ao-taglib</artifactId>
 			<version>3.0.0-SNAPSHOT</version>
 		</dependency>
-S		<dependency>
+		<dependency>
 			<groupId>com.aoindustries</groupId>
 			<artifactId>aocode-public</artifactId>
 			<version>1.10.0-SNAPSHOT</version>

@@ -24,11 +24,14 @@ package com.semanticcms.news.taglib;
 
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
+import com.aoindustries.net.Path;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
+import com.aoindustries.util.StringUtility;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
+import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.ElementContext;
-import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.pages.CaptureLevel;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.taglib.ElementTag;
@@ -94,17 +97,27 @@ public class NewsTag extends ElementTag<News> {
 
 	@Override
 	protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
-		super.evaluateAttributes(news, elContext);
-		news.setDomain(resolveValue(domain, String.class, elContext));
-		news.setBook(resolveValue(book, String.class, elContext));
-		news.setTargetPage(resolveValue(page, String.class, elContext));
-		news.setElement(resolveValue(element, String.class, elContext));
-		String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
-		if(viewStr == null) viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
-		news.setView(viewStr);
-		news.setTitle(resolveValue(title, String.class, elContext));
-		news.setDescription(resolveValue(description, String.class, elContext));
-		news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
+		try {
+			super.evaluateAttributes(news, elContext);
+			news.setDomain(resolveValue(domain, String.class, elContext));
+			news.setBook(
+				Path.valueOf(
+					StringUtility.nullIfEmpty(
+						resolveValue(book, String.class, elContext)
+					)
+				)
+			);
+			news.setTargetPage(resolveValue(page, String.class, elContext));
+			news.setElement(resolveValue(element, String.class, elContext));
+			String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
+			if(viewStr == null) viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
+			news.setView(viewStr);
+			news.setTitle(resolveValue(title, String.class, elContext));
+			news.setDescription(resolveValue(description, String.class, elContext));
+			news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
+		} catch(ValidationException e) {
+			throw new JspTagException(e);
+		}
 	}
 
 	private BufferResult writeMe;

@@ -24,10 +24,10 @@ package com.semanticcms.news.taglib;
 
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
+import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
-import com.aoindustries.util.StringUtility;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.ElementContext;
@@ -99,10 +99,16 @@ public class NewsTag extends ElementTag<News> {
 	protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
 		try {
 			super.evaluateAttributes(news, elContext);
-			news.setDomain(resolveValue(domain, String.class, elContext));
+			news.setDomain(
+				DomainName.valueOf(
+					nullIfEmpty(
+						resolveValue(domain, String.class, elContext)
+					)
+				)
+			);
 			news.setBook(
 				Path.valueOf(
-					StringUtility.nullIfEmpty(
+					nullIfEmpty(
 						resolveValue(book, String.class, elContext)
 					)
 				)

@@ -22,6 +22,7 @@
  */
 package com.semanticcms.news.taglib.book;
 
+import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.model.BookRef;
@@ -49,7 +50,7 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 			"Taglib Reference",
 			new ResourceRef(
 				new BookRef(
-					"semanticcms.com",
+					DomainName.valueOf("semanticcms.com"),
 					Path.valueOf("/news/taglib")
 				),
 				Path.valueOf("/semanticcms-news.tld")

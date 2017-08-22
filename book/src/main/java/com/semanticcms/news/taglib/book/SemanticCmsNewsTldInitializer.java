@@ -22,6 +22,10 @@
  */
 package com.semanticcms.news.taglib.book;
 
+import com.aoindustries.net.Path;
+import com.aoindustries.validation.ValidationException;
+import com.semanticcms.core.model.BookRef;
+import com.semanticcms.core.model.ResourceRef;
 import com.semanticcms.tagreference.TagReferenceInitializer;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -39,13 +43,17 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 		additionalApiLinks.put("com.semanticcms.core.model.", "https://semanticcms.com/core/model/apidocs/");
 	}
 
-	public SemanticCmsNewsTldInitializer() {
+	public SemanticCmsNewsTldInitializer() throws ValidationException {
 		super(
 			"News Taglib Reference",
 			"Taglib Reference",
-			"semanticcms.com",
-			"/news/taglib",
-			"/semanticcms-news.tld",
+			new ResourceRef(
+				new BookRef(
+					"semanticcms.com",
+					Path.valueOf("/news/taglib")
+				),
+				Path.valueOf("/semanticcms-news.tld")
+			),
 			Maven.properties.getProperty("javac.link.javaApi.jdk16"),
 			Maven.properties.getProperty("javac.link.javaeeApi.6"),
 			additionalApiLinks

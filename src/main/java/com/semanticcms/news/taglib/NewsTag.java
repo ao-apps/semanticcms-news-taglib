@@ -30,13 +30,13 @@ import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
 import static com.aoindustries.util.StringUtility.nullIfEmpty;
 import com.aoindustries.validation.ValidationException;
+import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.ElementContext;
+import com.semanticcms.core.model.Link;
 import com.semanticcms.core.pages.CaptureLevel;
-import com.semanticcms.core.servlet.PageUtils;
-import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.taglib.ElementTag;
 import com.semanticcms.news.model.News;
-import com.semanticcms.news.servlet.impl.NewsImpl;
+import com.semanticcms.news.renderer.html.NewsHtmlRenderer;
 import java.io.IOException;
 import java.io.Writer;
 import javax.el.ELContext;
@@ -116,7 +116,7 @@ public class NewsTag extends ElementTag<News> {
 			news.setTargetPage(resolveValue(page, String.class, elContext));
 			news.setElement(resolveValue(element, String.class, elContext));
 			String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
-			if(viewStr == null) viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
+			if(viewStr == null) viewStr = Link.DEFAULT_VIEW_NAME;
 			news.setView(viewStr);
 			news.setTitle(resolveValue(title, String.class, elContext));
 			news.setDescription(resolveValue(description, String.class, elContext));
@@ -140,7 +140,7 @@ public class NewsTag extends ElementTag<News> {
 				capturedOut = null;
 			}
 			try {
-				NewsImpl.writeNewsImpl(
+				NewsHtmlRenderer.writeNewsImpl(
 					pageContext.getServletContext(),
 					request,
 					(HttpServletResponse)pageContext.getResponse(),

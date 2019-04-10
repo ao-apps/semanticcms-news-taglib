@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
-Copyright (C) 2016, 2017, 2018  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2018, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -42,7 +42,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs</jodaTimeApidocs>
 	</properties>
 
-	<name>SemanticCMS News Taglib</name>
+	<name>SemanticCMS 2 News Taglib</name>
 	<url>https://semanticcms.com/news/taglib/</url>
 	<description>SemanticCMS newsfeeds in a JSP environment.</description>
 	<inceptionYear>2016</inceptionYear>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
-Copyright (C) 2016, 2017, 2019  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2018, 2019  AO Industries, Inc.
     support@aoindustries.com
     7262 Bull Pen Cir
     Mobile, AL 36695
@@ -39,7 +39,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<shortTitle>Taglib</shortTitle>
 		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/news/">SemanticCMS newsfeeds</a> in a JSP environment.]]></description.html>
 		<javadoc.taglibReference><![CDATA[<li><a target="_top" href="${project.url}semanticcms-news.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
-		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
+		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs</jodaTimeApidocs>
 	</properties>
 
 	<name>SemanticCMS 1 News Taglib</name>
@@ -59,28 +59,26 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<profile>
 			<id>release</id>
 			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
-							<configuration>
-								<links>
-									<link>${javac.link.javaApi}</link>
-									<link>${javac.link.javaeeApi.6}</link>
-									<link>https://aoindustries.com/ao-io-buffer/apidocs/</link>
-									<link>https://aoindustries.com/ao-servlet-filter/apidocs/</link>
-									<link>https://aoindustries.com/ao-taglib/apidocs/</link>
-									<link>https://aoindustries.com/aocode-public/apidocs/</link>
-									<link>https://semanticcms.com/core/model/apidocs/</link>
-									<link>https://semanticcms.com/core/servlet/apidocs/</link>
-									<link>https://semanticcms.com/core/taglib/apidocs/</link>
-									<link>https://semanticcms.com/news/model/apidocs/</link>
-									<link>https://semanticcms.com/news/servlet/apidocs/</link>
-								</links>
-							</configuration>
-						</plugin>
-					</plugins>
-				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId><artifactId>maven-javadoc-plugin</artifactId>
+						<configuration>
+							<links>
+								<link>${javac.link.javaApi}</link>
+								<link>${javac.link.javaeeApi.6}</link>
+								<link>https://aoindustries.com/ao-io-buffer/apidocs</link>
+								<link>https://aoindustries.com/ao-servlet-filter/apidocs</link>
+								<link>https://aoindustries.com/ao-taglib/apidocs</link>
+								<link>https://aoindustries.com/aocode-public/apidocs</link>
+								<link>https://semanticcms.com/core/model/apidocs</link>
+								<link>https://semanticcms.com/core/servlet/apidocs</link>
+								<link>https://semanticcms.com/core/taglib/apidocs</link>
+								<link>https://semanticcms.com/news/model/apidocs</link>
+								<link>https://semanticcms.com/news/servlet/apidocs</link>
+							</links>
+						</configuration>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 	</profiles>
@@ -99,13 +97,13 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId><version>2.0.3</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-io-buffer</artifactId><version>3.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>ao-servlet-filter</artifactId><version>1.5.0</version>
 		</dependency>
 		<dependency>
-			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>2.3.1</version>
+			<groupId>com.aoindustries</groupId><artifactId>ao-taglib</artifactId><version>3.0.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aoindustries</groupId><artifactId>aocode-public</artifactId><version>1.9.0</version>

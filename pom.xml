@@ -39,7 +39,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<shortTitle>Taglib</shortTitle>
 		<description.html><![CDATA[<a target="_top" href="https://semanticcms.com/news/">SemanticCMS newsfeeds</a> in a JSP environment.]]></description.html>
 		<javadoc.taglibReference><![CDATA[<li><a target="_top" href="${project.url}semanticcms-news.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
-		<jodaTimeApidocs>http://www.joda.org/joda-time/apidocs</jodaTimeApidocs>
+		<jodaTimeApidocs>https://www.joda.org/joda-time/apidocs</jodaTimeApidocs>
 	</properties>
 
 	<name>SemanticCMS 2 News Taglib</name>

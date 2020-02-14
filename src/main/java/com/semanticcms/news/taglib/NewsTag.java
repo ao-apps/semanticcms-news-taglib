@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2017  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -22,6 +22,7 @@
  */
 package com.semanticcms.news.taglib;
 
+import com.aoindustries.html.servlet.HtmlEE;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
 import com.aoindustries.net.DomainName;
@@ -41,6 +42,7 @@ import java.io.IOException;
 import java.io.Writer;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -140,11 +142,12 @@ public class NewsTag extends ElementTag<News> {
 				capturedOut = null;
 			}
 			try {
+				ServletContext servletContext = pageContext.getServletContext();
 				NewsHtmlRenderer.writeNewsImpl(
-					pageContext.getServletContext(),
+					servletContext,
 					request,
 					(HttpServletResponse)pageContext.getResponse(),
-					capturedOut,
+					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, capturedOut),
 					news
 				);
 			} finally {

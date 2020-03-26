@@ -25,11 +25,11 @@ package com.semanticcms.news.taglib;
 import com.aoindustries.html.servlet.HtmlEE;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
+import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
-import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.validation.ValidationException;
 import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.ElementContext;
@@ -143,11 +143,12 @@ public class NewsTag extends ElementTag<News> {
 			}
 			try {
 				ServletContext servletContext = pageContext.getServletContext();
+				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 				NewsHtmlRenderer.writeNewsImpl(
 					servletContext,
 					request,
-					(HttpServletResponse)pageContext.getResponse(),
-					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, capturedOut),
+					response,
+					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, response, capturedOut),
 					news
 				);
 			} finally {

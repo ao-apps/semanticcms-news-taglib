@@ -25,9 +25,9 @@ package com.semanticcms.news.taglib;
 import com.aoindustries.html.servlet.HtmlEE;
 import com.aoindustries.io.buffer.BufferResult;
 import com.aoindustries.io.buffer.BufferWriter;
+import static com.aoindustries.lang.Strings.nullIfEmpty;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.aoindustries.taglib.AutoEncodingBufferedTag;
-import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.servlet.CaptureLevel;
 import com.semanticcms.core.servlet.PageUtils;
@@ -118,11 +118,12 @@ public class NewsTag extends ElementTag<News> {
 			}
 			try {
 				ServletContext servletContext = pageContext.getServletContext();
+				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 				NewsImpl.writeNewsImpl(
 					servletContext,
 					request,
-					(HttpServletResponse)pageContext.getResponse(),
-					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, capturedOut),
+					response,
+					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, response, capturedOut),
 					news
 				);
 			} finally {

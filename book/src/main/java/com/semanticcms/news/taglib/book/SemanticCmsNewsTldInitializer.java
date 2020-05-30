@@ -27,9 +27,10 @@ import java.util.Collections;
 
 public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
+	@SuppressWarnings("unchecked")
 	public SemanticCmsNewsTldInitializer() {
 		super(
-			"News Taglib Reference",
+			Maven.properties.getProperty("project.name") + " Reference",
 			"Taglib Reference",
 			"/news/taglib",
 			"/semanticcms-news.tld",

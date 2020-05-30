@@ -34,12 +34,14 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 			"Taglib Reference",
 			"/news/taglib",
 			"/semanticcms-news.tld",
+			true,
 			Maven.properties.getProperty("documented.javadoc.link.javase"),
 			Maven.properties.getProperty("documented.javadoc.link.javaee"),
 			// Self
 			Collections.singletonMap("com.semanticcms.news.taglib", Maven.properties.getProperty("project.url") + "apidocs/"),
 			// Dependencies
-			Collections.singletonMap("com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/")
+			Collections.singletonMap("com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/"),
+			Collections.singletonMap("com.semanticcms.news.model", "https://semanticcms.com/news/model/apidocs/")
 		);
 	}
 }

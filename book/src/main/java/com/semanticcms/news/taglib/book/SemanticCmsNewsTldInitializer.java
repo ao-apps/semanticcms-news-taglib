@@ -32,9 +32,10 @@ import java.util.Collections;
 
 public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
+	@SuppressWarnings("unchecked")
 	public SemanticCmsNewsTldInitializer() throws ValidationException {
 		super(
-			"News Taglib Reference",
+			Maven.properties.getProperty("project.name") + " Reference",
 			"Taglib Reference",
 			new ResourceRef(
 				new BookRef(

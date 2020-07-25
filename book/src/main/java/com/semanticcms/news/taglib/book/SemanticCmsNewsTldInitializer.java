@@ -28,7 +28,7 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
 	public SemanticCmsNewsTldInitializer() {
 		super(
-			Maven.properties.getProperty("project.name") + " Reference",
+			Maven.properties.getProperty("documented.name") + " Reference",
 			"Taglib Reference",
 			"/news/taglib",
 			"/semanticcms-news.tld",

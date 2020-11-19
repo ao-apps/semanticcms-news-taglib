@@ -37,7 +37,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-31T00:49:08-0500"
-		dateModified="2020-05-29T18:30:40-05:00"
+		dateModified="2020-11-19T00:22:01-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-news-taglib:pom.version}" />
@@ -55,6 +55,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 			>
 				<ul>
 					<li>Added generics to TLD types and signatures.</li>
+					<li>Updated dependencies.</li>
 				</ul>
 			</changelog:release>
 		</c:if>

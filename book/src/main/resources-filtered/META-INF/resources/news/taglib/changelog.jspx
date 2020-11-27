@@ -37,7 +37,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		shortTitle="Changelog"
 		tocLevels="1"
 		datePublished="2016-10-31T00:49:08-0500"
-		dateModified="2020-11-27T03:04:31-06:00"
+		dateModified="2020-11-27T16:44:53-06:00"
 	>
 		<!-- The current snapshot, unreleased version -->
 		<c:set var="version" value="@{com.semanticcms:semanticcms-news-taglib:pom.version}" />
@@ -52,17 +52,26 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 				groupId="@{project.groupId}"
 				artifactId="@{documented.artifactId}"
 				scmUrl="@{project.scm.url}"
-			>
-				<ul>
-					<li>Added generics to TLD types and signatures.</li>
-					<li>Updated dependencies.</li>
-					<li>
-						News elements now trigger table of contents generation.  This allows links to the news element
-						to scroll to a meaningful position.
-					</li>
-				</ul>
-			</changelog:release>
+			/>
 		</c:if>
+
+		<changelog:release
+			projectName="@{documented.name}"
+			version="1.5.0"
+			datePublished="2020-11-27T16:44:53-06:00"
+			groupId="@{project.groupId}"
+			artifactId="@{documented.artifactId}"
+			scmUrl="@{project.scm.url}"
+		>
+			<ul>
+				<li>Added generics to TLD types and signatures.</li>
+				<li>Updated dependencies.</li>
+				<li>
+					News elements now trigger table of contents generation.  This allows links to the news element
+					to scroll to a meaningful position.
+				</li>
+			</ul>
+		</changelog:release>
 
 		<changelog:release
 			projectName="@{documented.name}"

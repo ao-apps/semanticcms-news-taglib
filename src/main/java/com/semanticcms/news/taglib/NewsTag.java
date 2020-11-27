@@ -22,14 +22,16 @@
  */
 package com.semanticcms.news.taglib;
 
-import com.aoindustries.encoding.taglib.EncodingBufferedTag;
-import com.aoindustries.html.servlet.HtmlEE;
-import com.aoindustries.io.buffer.BufferResult;
-import com.aoindustries.io.buffer.BufferWriter;
+import com.aoindustries.encoding.Doctype;
+import com.aoindustries.encoding.Serialization;
+import com.aoindustries.encoding.servlet.DoctypeEE;
+import com.aoindustries.encoding.servlet.SerializationEE;
+import com.aoindustries.html.Html;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
 import static com.aoindustries.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.servlet.CaptureLevel;
+import com.semanticcms.core.servlet.PageIndex;
 import com.semanticcms.core.servlet.PageUtils;
 import com.semanticcms.core.servlet.SemanticCMS;
 import com.semanticcms.core.taglib.ElementTag;
@@ -103,40 +105,39 @@ public class NewsTag extends ElementTag<News> {
 		news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
 	}
 
-	private BufferResult writeMe;
+	private HttpServletRequest request;
+	private PageIndex pageIndex;
+	private Serialization serialization;
+	private Doctype doctype;
 	@Override
 	protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
+		PageContext pageContext = (PageContext)getJspContext();
+		ServletContext servletContext = pageContext.getServletContext();
+		request = (HttpServletRequest)pageContext.getRequest();
+		pageIndex = PageIndex.getCurrentPageIndex(request);
+		serialization = SerializationEE.get(servletContext, request);
+		doctype = DoctypeEE.get(servletContext, request);
+		super.doBody(news, captureLevel);
 		try {
-			super.doBody(news, captureLevel);
-			final PageContext pageContext = (PageContext)getJspContext();
-			final HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
-			BufferWriter capturedOut;
-			if(captureLevel == CaptureLevel.BODY) {
-				capturedOut = EncodingBufferedTag.newBufferWriter(request);
-			} else {
-				capturedOut = null;
-			}
-			try {
-				ServletContext servletContext = pageContext.getServletContext();
-				HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-				NewsImpl.writeNewsImpl(
-					servletContext,
-					request,
-					response,
-					(capturedOut == null) ? null : HtmlEE.get(servletContext, request, response, capturedOut),
-					news
-				);
-			} finally {
-				if(capturedOut != null) capturedOut.close();
-			}
-			writeMe = capturedOut==null ? null : capturedOut.getResult();
+			NewsImpl.doBodyImpl(
+				servletContext,
+				request,
+				(HttpServletResponse)pageContext.getResponse(),
+				news
+			);
 		} catch(ServletException e) {
 			throw new JspTagException(e);
 		}
 	}
 
 	@Override
-	public void writeTo(Writer out, ElementContext context) throws IOException {
-		if(writeMe != null) writeMe.writeTo(out);
+	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
+		NewsImpl.writeNewsImpl(
+			request,
+			new Html(serialization, doctype, out),
+			context,
+			getElement(),
+			pageIndex
+		);
 	}
 }

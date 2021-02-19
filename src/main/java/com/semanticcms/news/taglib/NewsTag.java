@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2017, 2020  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020, 2021  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -26,7 +26,7 @@ import com.aoindustries.encoding.Doctype;
 import com.aoindustries.encoding.Serialization;
 import com.aoindustries.encoding.servlet.DoctypeEE;
 import com.aoindustries.encoding.servlet.SerializationEE;
-import com.aoindustries.html.Html;
+import com.aoindustries.html.Document;
 import static com.aoindustries.lang.Strings.nullIfEmpty;
 import com.aoindustries.net.DomainName;
 import com.aoindustries.net.Path;
@@ -159,7 +159,7 @@ public class NewsTag extends ElementTag<News> {
 	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
 		NewsHtmlRenderer.writeNewsImpl(
 			request,
-			new Html(serialization, doctype, out),
+			new Document(serialization, doctype, out),
 			context,
 			getElement(),
 			pageIndex

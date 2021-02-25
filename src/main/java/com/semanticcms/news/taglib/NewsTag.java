@@ -134,6 +134,7 @@ public class NewsTag extends ElementTag<News> {
 	private PageIndex pageIndex;
 	private Serialization serialization;
 	private Doctype doctype;
+
 	@Override
 	protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
 		PageContext pageContext = (PageContext)getJspContext();
@@ -157,12 +158,8 @@ public class NewsTag extends ElementTag<News> {
 
 	@Override
 	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
-		NewsHtmlRenderer.writeNewsImpl(
-			request,
-			new Document(serialization, doctype, out),
-			context,
-			getElement(),
-			pageIndex
-		);
+		Document document = new Document(serialization, doctype, out);
+		document.setIndent(false); // Do not add extra indentation to JSP
+		NewsHtmlRenderer.writeNewsImpl(request, document, context, getElement(), pageIndex);
 	}
 }

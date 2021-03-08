@@ -158,8 +158,14 @@ public class NewsTag extends ElementTag<News> {
 
 	@Override
 	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
-		Document document = new Document(serialization, doctype, out);
-		document.setIndent(false); // Do not add extra indentation to JSP
-		NewsHtmlRenderer.writeNewsImpl(request, document, context, getElement(), pageIndex);
+		NewsHtmlRenderer.writeNewsImpl(
+			request,
+			new Document(serialization, doctype, out)
+				.setAutonli(false) // Do not add extra newlines to JSP
+				.setIndent(false), // Do not add extra indentation to JSP
+			context,
+			getElement(),
+			pageIndex
+		);
 	}
 }

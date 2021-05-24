@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
-Copyright (C) 2016, 2017, 2019, 2020  AO Industries, Inc.
+Copyright (C) 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
 	support@aoindustries.com
 	7262 Bull Pen Cir
 	Mobile, AL 36695
@@ -25,8 +25,8 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 	version="2.1">
-	<!-- datePublished="2016-09-08T11:43:11-0500" -->
-	<!-- dateModified="2016-11-11T13:47:50-0600" -->
+	<!-- datePublished="2016-09-08T11:43:11-05:00" -->
+	<!-- dateModified="2016-11-11T13:47:50-06:00" -->
 	<description><![CDATA[
 		<p>@{description.html}</p>
 	]]></description>
@@ -38,8 +38,8 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 	<short-name>news</short-name>
 	<uri>@{project.url}</uri>
 	<tag>
-		<!-- datePublished="2016-09-08T11:43:11-0500" -->
-		<!-- dateModified="2019-04-20T21:05:53-0500" -->
+		<!-- datePublished="2016-09-08T11:43:11-05:00" -->
+		<!-- dateModified="2019-04-20T21:05:53-05:00" -->
 		<description><![CDATA[
 			<p>
 				A newsfeed item, used to annotate pages and elements of what
@@ -179,7 +179,7 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses/>.
 		<dynamic-attributes>true</dynamic-attributes>
 	</tag>
 	<function>
-		<!-- datePublished="2016-09-09T20:28:53-0500" -->
+		<!-- datePublished="2016-09-09T20:28:53-05:00" -->
 		<!-- dateModified="2020-05-29T14:25:33-05:00" -->
 		<description><![CDATA[
 			<p>

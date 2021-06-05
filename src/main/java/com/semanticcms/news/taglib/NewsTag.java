@@ -22,16 +22,16 @@
  */
 package com.semanticcms.news.taglib;
 
-import com.aoindustries.encoding.Doctype;
-import com.aoindustries.encoding.Serialization;
-import com.aoindustries.encoding.servlet.DoctypeEE;
-import com.aoindustries.encoding.servlet.SerializationEE;
-import com.aoindustries.html.Document;
-import static com.aoindustries.lang.Strings.nullIfEmpty;
-import com.aoindustries.net.DomainName;
-import com.aoindustries.net.Path;
-import static com.aoindustries.taglib.AttributeUtils.resolveValue;
-import com.aoindustries.validation.ValidationException;
+import com.aoapps.encoding.Doctype;
+import com.aoapps.encoding.Serialization;
+import com.aoapps.encoding.servlet.DoctypeEE;
+import com.aoapps.encoding.servlet.SerializationEE;
+import com.aoapps.html.Document;
+import static com.aoapps.lang.Strings.nullIfEmpty;
+import com.aoapps.lang.validation.ValidationException;
+import com.aoapps.net.DomainName;
+import com.aoapps.net.Path;
+import static com.aoapps.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.model.Link;

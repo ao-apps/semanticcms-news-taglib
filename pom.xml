@@ -40,6 +40,10 @@ along with semanticcms-news-taglib.  If not, see <http://www.gnu.org/licenses />
 		<description.html><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/news/">SemanticCMS newsfeeds</a> in a JSP environment.]]></description.html>
 		<javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-news.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 		<jodaTimeApidocs>https://www.joda.org/joda-time/apidocs/</jodaTimeApidocs>
+		<!-- SonarCloud.io -->
+		<sonar.projectKey>${project.groupId}:${project.artifactId}</sonar.projectKey>
+		<sonar.organization>aoindustries</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<name>SemanticCMS News Taglib</name>

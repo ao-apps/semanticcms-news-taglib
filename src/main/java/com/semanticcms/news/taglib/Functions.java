@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
-final public class Functions {
+public final class Functions {
 
 	public static List<News> findAllNews(Page page) throws ServletException, IOException {
 		return NewsUtils.findAllNews(

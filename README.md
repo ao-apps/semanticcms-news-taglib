@@ -1,4 +1,4 @@
-# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/aoindustries) [SemanticCMS](https://github.com/aoindustries/semanticcms) / [News](https://github.com/aoindustries/semanticcms-news) / [Taglib](https://github.com/aoindustries/semanticcms-news-taglib)
+# [<img src="ao-logo.png" alt="AO Logo" width="35" height="40">](https://github.com/ao-apps) [SemanticCMS](https://github.com/ao-apps/semanticcms) / [News](https://github.com/ao-apps/semanticcms-news) / [Taglib](https://github.com/ao-apps/semanticcms-news-taglib)
 
 [![project: current stable](https://semanticcms.com/ao-badges/project-current-stable.svg)](https://aoindustries.com/life-cycle#project-current-stable)
 [![management: production](https://semanticcms.com/ao-badges/management-production.svg)](https://aoindustries.com/life-cycle#management-production)
@@ -8,7 +8,7 @@
 [![semantic versioning: 2.0.0](https://semanticcms.com/ao-badges/semver-2.0.0.svg)](http://semver.org/spec/v2.0.0.html)
 [![license: LGPL v3](https://semanticcms.com/ao-badges/license-lgpl-3.0.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
-[![Build](https://github.com/aoindustries/semanticcms-news-taglib/workflows/Build/badge.svg?branch=1.x)](https://github.com/aoindustries/semanticcms-news-taglib/actions?query=workflow%3ABuild)
+[![Build](https://github.com/ao-apps/semanticcms-news-taglib/workflows/Build/badge.svg?branch=1.x)](https://github.com/ao-apps/semanticcms-news-taglib/actions?query=workflow%3ABuild)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.semanticcms/semanticcms-news-taglib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.semanticcms/semanticcms-news-taglib)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?branch=1.x&project=com.semanticcms%3Asemanticcms-news-taglib&metric=alert_status)](https://sonarcloud.io/dashboard?branch=1.x&id=com.semanticcms%3Asemanticcms-news-taglib)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?branch=1.x&project=com.semanticcms%3Asemanticcms-news-taglib&metric=ncloc)](https://sonarcloud.io/component_measures?branch=1.x&id=com.semanticcms%3Asemanticcms-news-taglib&metric=ncloc)  
@@ -17,7 +17,7 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?branch=1.x&project=com.semanticcms%3Asemanticcms-news-taglib&metric=sqale_rating)](https://sonarcloud.io/component_measures?branch=1.x&id=com.semanticcms%3Asemanticcms-news-taglib&metric=Maintainability)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?branch=1.x&project=com.semanticcms%3Asemanticcms-news-taglib&metric=coverage)](https://sonarcloud.io/component_measures?branch=1.x&id=com.semanticcms%3Asemanticcms-news-taglib&metric=Coverage)
 
-[SemanticCMS newsfeeds](https://github.com/aoindustries/semanticcms-news) in a JSP environment.
+[SemanticCMS newsfeeds](https://github.com/ao-apps/semanticcms-news) in a JSP environment.
 
 ## Project Links
 * [Project Home](https://semanticcms.com/news/taglib/)
@@ -25,7 +25,7 @@
 * [Taglib Reference](https://semanticcms.com/news/taglib/semanticcms-news.tld/)
 * [API Docs](https://semanticcms.com/news/taglib/apidocs/)
 * [Maven Central Repository](https://search.maven.org/artifact/com.semanticcms/semanticcms-news-taglib)
-* [GitHub](https://github.com/aoindustries/semanticcms-news-taglib)
+* [GitHub](https://github.com/ao-apps/semanticcms-news-taglib)
 
 ## Contact Us
 For questions or support, please [contact us](https://aoindustries.com/contact):

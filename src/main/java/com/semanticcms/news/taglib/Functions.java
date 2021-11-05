@@ -32,7 +32,10 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
-public final class Functions {
+public abstract class Functions {
+
+	/** Make no instances. */
+	private Functions() {throw new AssertionError();}
 
 	public static List<News> findAllNews(Page page) throws ServletException, IOException {
 		return NewsUtils.findAllNews(
@@ -41,11 +44,5 @@ public final class Functions {
 			getResponse(),
 			page
 		);
-	}
-
-	/**
-	 * Make no instances.
-	 */
-	private Functions() {
 	}
 }

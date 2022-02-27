@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2021  AO Industries, Inc.
+ * Copyright (C) 2016, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
-public abstract class Functions {
+public final class Functions {
 
 	/** Make no instances. */
 	private Functions() {throw new AssertionError();}

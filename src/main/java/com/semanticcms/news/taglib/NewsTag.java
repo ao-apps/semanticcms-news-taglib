@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2017, 2020, 2021  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020, 2021, 2022  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -39,6 +39,7 @@ import com.semanticcms.news.model.News;
 import com.semanticcms.news.servlet.impl.NewsImpl;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
 import javax.el.ELContext;
 import javax.el.ValueExpression;
 import javax.servlet.ServletContext;
@@ -109,23 +110,21 @@ public class NewsTag extends ElementTag<News> {
 	private PageIndex pageIndex;
 	private Serialization serialization;
 	private Doctype doctype;
+	private Charset characterEncoding;
 
 	@Override
 	protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
 		PageContext pageContext = (PageContext)getJspContext();
 		ServletContext servletContext = pageContext.getServletContext();
+		HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
 		request = (HttpServletRequest)pageContext.getRequest();
 		pageIndex = PageIndex.getCurrentPageIndex(request);
 		serialization = SerializationEE.get(servletContext, request);
 		doctype = DoctypeEE.get(servletContext, request);
+		characterEncoding = Charset.forName(response.getCharacterEncoding());
 		super.doBody(news, captureLevel);
 		try {
-			NewsImpl.doBodyImpl(
-				servletContext,
-				request,
-				(HttpServletResponse)pageContext.getResponse(),
-				news
-			);
+			NewsImpl.doBodyImpl(servletContext, request, response, news);
 		} catch(ServletException e) {
 			throw new JspTagException(e);
 		}
@@ -135,7 +134,7 @@ public class NewsTag extends ElementTag<News> {
 	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
 		NewsImpl.writeNewsImpl(
 			request,
-			new Document(serialization, doctype, out)
+			new Document(serialization, doctype, characterEncoding, out)
 				.setAutonli(false) // Do not add extra newlines to JSP
 				.setIndent(false), // Do not add extra indentation to JSP
 			context,

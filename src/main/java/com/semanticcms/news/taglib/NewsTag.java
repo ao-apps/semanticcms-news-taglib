@@ -53,94 +53,96 @@ import javax.servlet.jsp.PageContext;
 
 public class NewsTag extends ElementTag<News> {
 
-	private ValueExpression book;
-	public void setBook(ValueExpression book) {
-		this.book = book;
-	}
+  private ValueExpression book;
+  public void setBook(ValueExpression book) {
+    this.book = book;
+  }
 
-	private ValueExpression page;
-	public void setPage(ValueExpression page) {
-		this.page = page;
-	}
+  private ValueExpression page;
+  public void setPage(ValueExpression page) {
+    this.page = page;
+  }
 
-	private ValueExpression element;
-	public void setElement(ValueExpression element) {
-		this.element = element;
-	}
+  private ValueExpression element;
+  public void setElement(ValueExpression element) {
+    this.element = element;
+  }
 
-	private ValueExpression view;
-	public void setView(ValueExpression view) {
-		this.view = view;
-	}
+  private ValueExpression view;
+  public void setView(ValueExpression view) {
+    this.view = view;
+  }
 
-	private ValueExpression title;
-	public void setTitle(ValueExpression title) {
-		this.title = title;
-	}
+  private ValueExpression title;
+  public void setTitle(ValueExpression title) {
+    this.title = title;
+  }
 
-	private ValueExpression description;
-	public void setDescription(ValueExpression description) {
-		this.description = description;
-	}
+  private ValueExpression description;
+  public void setDescription(ValueExpression description) {
+    this.description = description;
+  }
 
-	private ValueExpression pubDate;
-	public void setPubDate(ValueExpression pubDate) {
-		this.pubDate = pubDate;
-	}
+  private ValueExpression pubDate;
+  public void setPubDate(ValueExpression pubDate) {
+    this.pubDate = pubDate;
+  }
 
-	@Override
-	protected News createElement() {
-		return new News();
-	}
+  @Override
+  protected News createElement() {
+    return new News();
+  }
 
-	@Override
-	protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
-		super.evaluateAttributes(news, elContext);
-		news.setBook(resolveValue(book, String.class, elContext));
-		news.setTargetPage(resolveValue(page, String.class, elContext));
-		news.setElement(resolveValue(element, String.class, elContext));
-		String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
-		if(viewStr == null) viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
-		news.setView(viewStr);
-		news.setTitle(resolveValue(title, String.class, elContext));
-		news.setDescription(resolveValue(description, String.class, elContext));
-		news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
-	}
+  @Override
+  protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
+    super.evaluateAttributes(news, elContext);
+    news.setBook(resolveValue(book, String.class, elContext));
+    news.setTargetPage(resolveValue(page, String.class, elContext));
+    news.setElement(resolveValue(element, String.class, elContext));
+    String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
+    if (viewStr == null) {
+      viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
+    }
+    news.setView(viewStr);
+    news.setTitle(resolveValue(title, String.class, elContext));
+    news.setDescription(resolveValue(description, String.class, elContext));
+    news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
+  }
 
-	private HttpServletRequest request;
-	private PageIndex pageIndex;
-	private Serialization serialization;
-	private Doctype doctype;
-	private Charset characterEncoding;
+  private HttpServletRequest request;
+  private PageIndex pageIndex;
+  private Serialization serialization;
+  private Doctype doctype;
+  private Charset characterEncoding;
 
-	@Override
-	protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
-		PageContext pageContext = (PageContext)getJspContext();
-		ServletContext servletContext = pageContext.getServletContext();
-		HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-		request = (HttpServletRequest)pageContext.getRequest();
-		pageIndex = PageIndex.getCurrentPageIndex(request);
-		serialization = SerializationEE.get(servletContext, request);
-		doctype = DoctypeEE.get(servletContext, request);
-		characterEncoding = Charset.forName(response.getCharacterEncoding());
-		super.doBody(news, captureLevel);
-		try {
-			NewsImpl.doBodyImpl(servletContext, request, response, news);
-		} catch(ServletException e) {
-			throw new JspTagException(e);
-		}
-	}
+  @Override
+  protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
+    PageContext pageContext = (PageContext)getJspContext();
+    ServletContext servletContext = pageContext.getServletContext();
+    HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
+    request = (HttpServletRequest)pageContext.getRequest();
+    pageIndex = PageIndex.getCurrentPageIndex(request);
+    serialization = SerializationEE.get(servletContext, request);
+    doctype = DoctypeEE.get(servletContext, request);
+    characterEncoding = Charset.forName(response.getCharacterEncoding());
+    super.doBody(news, captureLevel);
+    try {
+      NewsImpl.doBodyImpl(servletContext, request, response, news);
+    } catch (ServletException e) {
+      throw new JspTagException(e);
+    }
+  }
 
-	@Override
-	public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
-		NewsImpl.writeNewsImpl(
-			request,
-			new Document(serialization, doctype, characterEncoding, out)
-				.setAutonli(false) // Do not add extra newlines to JSP
-				.setIndent(false), // Do not add extra indentation to JSP
-			context,
-			getElement(),
-			pageIndex
-		);
-	}
+  @Override
+  public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
+    NewsImpl.writeNewsImpl(
+      request,
+      new Document(serialization, doctype, characterEncoding, out)
+        .setAutonli(false) // Do not add extra newlines to JSP
+        .setIndent(false), // Do not add extra indentation to JSP
+      context,
+      getElement(),
+      pageIndex
+    );
+  }
 }

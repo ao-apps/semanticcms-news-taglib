@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
-Copyright (C) 2016, 2017, 2019, 2020, 2021  AO Industries, Inc.
-	support@aoindustries.com
-	7262 Bull Pen Cir
-	Mobile, AL 36695
+Copyright (C) 2016, 2017, 2019, 2020, 2021, 2022  AO Industries, Inc.
+    support@aoindustries.com
+    7262 Bull Pen Cir
+    Mobile, AL 36695
 
 This file is part of semanticcms-news-taglib.
 
@@ -22,161 +22,161 @@ You should have received a copy of the GNU Lesser General Public License
 along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>.
 -->
 <taglib xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
-	version="2.1">
-	<!-- datePublished="2016-09-08T11:43:11-05:00" -->
-	<!-- dateModified="2016-11-11T13:47:50-06:00" -->
-	<description><![CDATA[
-		<p>@{description.html}</p>
-	]]></description>
-	<display-name>@{project.name}</display-name>
-	<tlib-version>
-		<!-- Release: @{project.version} -->
-		@{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
-	</tlib-version>
-	<short-name>news</short-name>
-	<uri>@{project.url}</uri>
-	<tag>
-		<!-- datePublished="2016-09-08T11:43:11-05:00" -->
-		<!-- dateModified="2019-04-20T21:05:53-05:00" -->
-		<description><![CDATA[
-			<p>
-				A newsfeed item, used to annotate pages and elements of what
-				changes.  The news entries are not typically directly visible, but 
-				instead are available via news views, RSS feeds, newsletters, Twitter
-				tweets, and such.
-			</p>
-		]]></description>
-		<name>news</name>
-		<tag-class>com.semanticcms.news.taglib.NewsTag</tag-class>
-		<body-content>scriptless</body-content>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The id used in URL anchors.
-					If not provided, is generated from the label.
-					Must be unique per page.
-					Ids generated from labels will be unique, but may change as page structure changes.
-				</p>
-			]]></description>
-			<name>id</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The book of the news target book.
-					Defaults to the book of the current JSP file.
-				</p>
-			]]></description>
-			<name>book</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The page-relative path to the news target book.
-					Required when book provided.
-					Defaults to the parent page/element of the news entry when not specified.
-				</p>
-			]]></description>
-			<name>page</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The id of the news target element.
-					Defaults to the parent page/element of the news entry when book, page, and element not specified.
-				</p>
-			]]></description>
-			<name>element</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The view to use for the target element.
-					Defaults to <code>content</code> when not specified.
-				</p>
-			]]></description>
-			<name>view</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The title of the news entry.
-					Defaults to the target page title/element label when not specified.
-				</p>
-			]]></description>
-			<name>title</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The optional description of the news entry.
-				</p>
-			]]></description>
-			<name>description</name>
-			<required>false</required>
-			<deferred-value>
-				<type>java.lang.String</type>
-			</deferred-value>
-		</attribute>
-		<attribute>
-			<description><![CDATA[
-				<p>
-					The publication date in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
-				</p>
-				<p>
-					At least <code>YYYY-MM-DD</code> is required,
-					and when time not specified will default to midnight in the current system time zone.
-					A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
-					Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
-					is accepted.
-				</p>
-			]]></description>
-			<name>pubDate</name>
-			<required>true</required>
-			<deferred-value>
-				<type>java.lang.Object</type>
-			</deferred-value>
-		</attribute>
-		<dynamic-attributes>true</dynamic-attributes>
-	</tag>
-	<function>
-		<!-- datePublished="2016-09-09T20:28:53-05:00" -->
-		<!-- dateModified="2020-05-29T14:25:33-05:00" -->
-		<description><![CDATA[
-			<p>
-				Gets all the new items in the given page and below, ordered by <code>pubDate desc, page</code>.
-			</p>
-		]]></description>
-		<name>findAllNews</name>
-		<function-class>com.semanticcms.news.taglib.Functions</function-class>
-		<function-signature>java.util.List findAllNews(com.semanticcms.core.model.Page)</function-signature>
-		<!-- functionSignature="java.util.List<com.semanticcms.news.model.News> findAllNews(com.semanticcms.core.model.Page)" -->
-		<example><![CDATA[<code>${news:findAllNews(page)}</code>]]></example>
-	</function>
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+  version="2.1">
+  <!-- datePublished="2016-09-08T11:43:11-05:00" -->
+  <!-- dateModified="2016-11-11T13:47:50-06:00" -->
+  <description><![CDATA[
+    <p>@{description.html}</p>
+  ]]></description>
+  <display-name>@{project.name}</display-name>
+  <tlib-version>
+    <!-- Release: @{project.version} -->
+    @{parsedVersion.majorVersion}.@{parsedVersion.minorVersion}.@{parsedVersion.incrementalVersion}
+  </tlib-version>
+  <short-name>news</short-name>
+  <uri>@{project.url}</uri>
+  <tag>
+    <!-- datePublished="2016-09-08T11:43:11-05:00" -->
+    <!-- dateModified="2019-04-20T21:05:53-05:00" -->
+    <description><![CDATA[
+      <p>
+        A newsfeed item, used to annotate pages and elements of what
+        changes.  The news entries are not typically directly visible, but 
+        instead are available via news views, RSS feeds, newsletters, Twitter
+        tweets, and such.
+      </p>
+    ]]></description>
+    <name>news</name>
+    <tag-class>com.semanticcms.news.taglib.NewsTag</tag-class>
+    <body-content>scriptless</body-content>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The id used in URL anchors.
+          If not provided, is generated from the label.
+          Must be unique per page.
+          Ids generated from labels will be unique, but may change as page structure changes.
+        </p>
+      ]]></description>
+      <name>id</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The book of the news target book.
+          Defaults to the book of the current JSP file.
+        </p>
+      ]]></description>
+      <name>book</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The page-relative path to the news target book.
+          Required when book provided.
+          Defaults to the parent page/element of the news entry when not specified.
+        </p>
+      ]]></description>
+      <name>page</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The id of the news target element.
+          Defaults to the parent page/element of the news entry when book, page, and element not specified.
+        </p>
+      ]]></description>
+      <name>element</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The view to use for the target element.
+          Defaults to <code>content</code> when not specified.
+        </p>
+      ]]></description>
+      <name>view</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The title of the news entry.
+          Defaults to the target page title/element label when not specified.
+        </p>
+      ]]></description>
+      <name>title</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The optional description of the news entry.
+        </p>
+      ]]></description>
+      <name>description</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <description><![CDATA[
+        <p>
+          The publication date in <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO 8601</a> format.
+        </p>
+        <p>
+          At least <code>YYYY-MM-DD</code> is required,
+          and when time not specified will default to midnight in the current system time zone.
+          A long value of <code>-1</code> or <code>0</code> is converted to <code>null</code>.
+          Any value accepted by Joda Time <a href="@{jodaTimeApidocs}org/joda/time/DateTime.html#DateTime-java.lang.Object-">DateTime</a>
+          is accepted.
+        </p>
+      ]]></description>
+      <name>pubDate</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.Object</type>
+      </deferred-value>
+    </attribute>
+    <dynamic-attributes>true</dynamic-attributes>
+  </tag>
+  <function>
+    <!-- datePublished="2016-09-09T20:28:53-05:00" -->
+    <!-- dateModified="2020-05-29T14:25:33-05:00" -->
+    <description><![CDATA[
+      <p>
+        Gets all the new items in the given page and below, ordered by <code>pubDate desc, page</code>.
+      </p>
+    ]]></description>
+    <name>findAllNews</name>
+    <function-class>com.semanticcms.news.taglib.Functions</function-class>
+    <function-signature>java.util.List findAllNews(com.semanticcms.core.model.Page)</function-signature>
+    <!-- functionSignature="java.util.List<com.semanticcms.news.model.News> findAllNews(com.semanticcms.core.model.Page)" -->
+    <example><![CDATA[<code>${news:findAllNews(page)}</code>]]></example>
+  </function>
 </taglib>

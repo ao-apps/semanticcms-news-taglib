@@ -35,15 +35,17 @@ import javax.servlet.ServletException;
 
 public final class Functions {
 
-	/** Make no instances. */
-	private Functions() {throw new AssertionError();}
+  /** Make no instances. */
+  private Functions() {
+    throw new AssertionError();
+  }
 
-	public static List<News> findAllNews(Page page) throws ServletException, IOException {
-		return NewsUtils.findAllNews(
-			getServletContext(),
-			getRequest(),
-			getResponse(),
-			page
-		);
-	}
+  public static List<News> findAllNews(Page page) throws ServletException, IOException {
+    return NewsUtils.findAllNews(
+      getServletContext(),
+      getRequest(),
+      getResponse(),
+      page
+    );
+  }
 }

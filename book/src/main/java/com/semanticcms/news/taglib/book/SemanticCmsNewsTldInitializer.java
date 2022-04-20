@@ -32,25 +32,25 @@ import com.semanticcms.tagreference.TagReferenceInitializer;
 
 public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
-	public SemanticCmsNewsTldInitializer() throws ValidationException {
-		super(
-			Maven.properties.getProperty("documented.name") + " Reference",
-			"Taglib Reference",
-			new ResourceRef(
-				new BookRef(
-					DomainName.valueOf("semanticcms.com"),
-					Path.valueOf("/news/taglib")
-				),
-				Path.valueOf("/semanticcms-news.tld")
-			),
-			true,
-			Maven.properties.getProperty("documented.javadoc.link.javase"),
-			Maven.properties.getProperty("documented.javadoc.link.javaee"),
-			// Self
-			"com.semanticcms.news.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.news.taglib/",
-			// Dependencies
-			"com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
-			"com.semanticcms.news.model", "https://semanticcms.com/news/model/apidocs/com.semanticcms.news.model/"
-		);
-	}
+  public SemanticCmsNewsTldInitializer() throws ValidationException {
+    super(
+      Maven.properties.getProperty("documented.name") + " Reference",
+      "Taglib Reference",
+      new ResourceRef(
+        new BookRef(
+          DomainName.valueOf("semanticcms.com"),
+          Path.valueOf("/news/taglib")
+        ),
+        Path.valueOf("/semanticcms-news.tld")
+      ),
+      true,
+      Maven.properties.getProperty("documented.javadoc.link.javase"),
+      Maven.properties.getProperty("documented.javadoc.link.javaee"),
+      // Self
+      "com.semanticcms.news.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.news.taglib/",
+      // Dependencies
+      "com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
+      "com.semanticcms.news.model", "https://semanticcms.com/news/model/apidocs/com.semanticcms.news.model/"
+    );
+  }
 }

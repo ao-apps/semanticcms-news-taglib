@@ -42,10 +42,10 @@ public final class Functions {
 
   public static List<News> findAllNews(Page page) throws ServletException, IOException {
     return NewsUtils.findAllNews(
-      getServletContext(),
-      getRequest(),
-      getResponse(),
-      page
+        getServletContext(),
+        getRequest(),
+        getResponse(),
+        page
     );
   }
 }

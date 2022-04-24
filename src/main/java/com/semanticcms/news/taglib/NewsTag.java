@@ -57,41 +57,49 @@ import javax.servlet.jsp.PageContext;
 public class NewsTag extends ElementTag<News> {
 
   private ValueExpression domain;
+
   public void setDomain(ValueExpression domain) {
     this.domain = domain;
   }
 
   private ValueExpression book;
+
   public void setBook(ValueExpression book) {
     this.book = book;
   }
 
   private ValueExpression page;
+
   public void setPage(ValueExpression page) {
     this.page = page;
   }
 
   private ValueExpression element;
+
   public void setElement(ValueExpression element) {
     this.element = element;
   }
 
   private ValueExpression view;
+
   public void setView(ValueExpression view) {
     this.view = view;
   }
 
   private ValueExpression title;
+
   public void setTitle(ValueExpression title) {
     this.title = title;
   }
 
   private ValueExpression description;
+
   public void setDescription(ValueExpression description) {
     this.description = description;
   }
 
   private ValueExpression pubDate;
+
   public void setPubDate(ValueExpression pubDate) {
     this.pubDate = pubDate;
   }
@@ -106,18 +114,18 @@ public class NewsTag extends ElementTag<News> {
     try {
       super.evaluateAttributes(news, elContext);
       news.setDomain(
-        DomainName.valueOf(
-          nullIfEmpty(
-            resolveValue(domain, String.class, elContext)
+          DomainName.valueOf(
+              nullIfEmpty(
+                  resolveValue(domain, String.class, elContext)
+              )
           )
-        )
       );
       news.setBook(
-        Path.valueOf(
-          nullIfEmpty(
-            resolveValue(book, String.class, elContext)
+          Path.valueOf(
+              nullIfEmpty(
+                  resolveValue(book, String.class, elContext)
+              )
           )
-        )
       );
       news.setTargetPage(resolveValue(page, String.class, elContext));
       news.setElement(resolveValue(element, String.class, elContext));
@@ -142,10 +150,10 @@ public class NewsTag extends ElementTag<News> {
 
   @Override
   protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
-    PageContext pageContext = (PageContext)getJspContext();
+    PageContext pageContext = (PageContext) getJspContext();
     ServletContext servletContext = pageContext.getServletContext();
-    HttpServletResponse response = (HttpServletResponse)pageContext.getResponse();
-    request = (HttpServletRequest)pageContext.getRequest();
+    HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
+    request = (HttpServletRequest) pageContext.getRequest();
     pageIndex = PageIndex.getCurrentPageIndex(request);
     serialization = SerializationEE.get(servletContext, request);
     doctype = DoctypeEE.get(servletContext, request);
@@ -161,13 +169,13 @@ public class NewsTag extends ElementTag<News> {
   @Override
   public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
     NewsHtmlRenderer.writeNewsImpl(
-      request,
-      new Document(serialization, doctype, characterEncoding, out)
-        .setAutonli(false) // Do not add extra newlines to JSP
-        .setIndent(false), // Do not add extra indentation to JSP
-      context,
-      getElement(),
-      pageIndex
+        request,
+        new Document(serialization, doctype, characterEncoding, out)
+            .setAutonli(false) // Do not add extra newlines to JSP
+            .setIndent(false), // Do not add extra indentation to JSP
+        context,
+        getElement(),
+        pageIndex
     );
   }
 }

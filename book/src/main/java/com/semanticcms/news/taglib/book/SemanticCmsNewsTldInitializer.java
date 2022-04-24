@@ -29,18 +29,18 @@ public class SemanticCmsNewsTldInitializer extends TagReferenceInitializer {
 
   public SemanticCmsNewsTldInitializer() {
     super(
-      Maven.properties.getProperty("documented.name") + " Reference",
-      "Taglib Reference",
-      "/news/taglib",
-      "/semanticcms-news.tld",
-      true,
-      Maven.properties.getProperty("documented.javadoc.link.javase"),
-      Maven.properties.getProperty("documented.javadoc.link.javaee"),
-      // Self
-      "com.semanticcms.news.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.news.taglib/",
-      // Dependencies
-      "com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
-      "com.semanticcms.news.model", "https://semanticcms.com/news/model/apidocs/com.semanticcms.news.model/"
+        Maven.properties.getProperty("documented.name") + " Reference",
+        "Taglib Reference",
+        "/news/taglib",
+        "/semanticcms-news.tld",
+        true,
+        Maven.properties.getProperty("documented.javadoc.link.javase"),
+        Maven.properties.getProperty("documented.javadoc.link.javaee"),
+        // Self
+        "com.semanticcms.news.taglib", Maven.properties.getProperty("project.url") + "apidocs/com.semanticcms.news.taglib/",
+        // Dependencies
+        "com.semanticcms.core.model", "https://semanticcms.com/core/model/apidocs/com.semanticcms.core.model/",
+        "com.semanticcms.news.model", "https://semanticcms.com/news/model/apidocs/com.semanticcms.news.model/"
     );
   }
 }

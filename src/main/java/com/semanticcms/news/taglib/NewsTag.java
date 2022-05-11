@@ -23,16 +23,17 @@
 
 package com.semanticcms.news.taglib;
 
+import static com.aoapps.lang.Strings.nullIfEmpty;
+import static com.aoapps.taglib.AttributeUtils.resolveValue;
+
 import com.aoapps.encoding.Doctype;
 import com.aoapps.encoding.Serialization;
 import com.aoapps.encoding.servlet.DoctypeEE;
 import com.aoapps.encoding.servlet.SerializationEE;
 import com.aoapps.html.Document;
-import static com.aoapps.lang.Strings.nullIfEmpty;
 import com.aoapps.lang.validation.ValidationException;
 import com.aoapps.net.DomainName;
 import com.aoapps.net.Path;
-import static com.aoapps.taglib.AttributeUtils.resolveValue;
 import com.semanticcms.core.controller.PageUtils;
 import com.semanticcms.core.model.ElementContext;
 import com.semanticcms.core.model.Link;
@@ -54,6 +55,12 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspTagException;
 import javax.servlet.jsp.PageContext;
 
+/**
+ * A newsfeed item, used to annotate pages and elements of what
+ * changes.  The news entries are not typically directly visible, but
+ * instead are available via news views, RSS feeds, newsletters, Twitter
+ * tweets, and such.
+ */
 public class NewsTag extends ElementTag<News> {
 
   private ValueExpression domain;
@@ -152,7 +159,7 @@ public class NewsTag extends ElementTag<News> {
   protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
     PageContext pageContext = (PageContext) getJspContext();
     ServletContext servletContext = pageContext.getServletContext();
-    HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
+    final HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
     request = (HttpServletRequest) pageContext.getRequest();
     pageIndex = PageIndex.getCurrentPageIndex(request);
     serialization = SerializationEE.get(servletContext, request);

@@ -26,6 +26,7 @@ package com.semanticcms.news.taglib;
 import static com.aoapps.servlet.filter.FunctionContext.getRequest;
 import static com.aoapps.servlet.filter.FunctionContext.getResponse;
 import static com.aoapps.servlet.filter.FunctionContext.getServletContext;
+
 import com.semanticcms.core.model.Page;
 import com.semanticcms.news.model.News;
 import com.semanticcms.news.servlet.NewsUtils;
@@ -33,6 +34,9 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
 
+/**
+ * Tag library function implementations.
+ */
 public final class Functions {
 
   /** Make no instances. */
@@ -40,6 +44,9 @@ public final class Functions {
     throw new AssertionError();
   }
 
+  /**
+   * Gets all the new items in the given page and below, ordered by <code>pubDate desc, page</code>.
+   */
   public static List<News> findAllNews(Page page) throws ServletException, IOException {
     return NewsUtils.findAllNews(
         getServletContext(),

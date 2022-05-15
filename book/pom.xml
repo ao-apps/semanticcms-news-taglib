@@ -29,7 +29,7 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <relativePath>../../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib-book</artifactId><version>1.6.1-SNAPSHOT</version>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib-book</artifactId><version>1.6.1</version>
   <packaging>bundle</packaging>
 
   <properties>
@@ -76,7 +76,7 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <connection>scm:git:git://github.com/ao-apps/semanticcms-news-taglib.git</connection>
     <developerConnection>scm:git:git@github.com:ao-apps/semanticcms-news-taglib.git</developerConnection>
     <url>https://github.com/ao-apps/semanticcms-news-taglib</url>
-    <tag>HEAD</tag>
+    <tag>semanticcms-news-taglib-book-1.6.1</tag>
   </scm>
 
   <issueManagement>

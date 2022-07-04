@@ -36,15 +36,15 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <module.name>com.semanticcms.news.taglib.book</module.name>
     <!-- These values are copied from the project being documented -->
     <documented.artifactId>semanticcms-news-taglib</documented.artifactId>
-    <documented.name>SemanticCMS News Taglib²</documented.name>
+    <documented.name>SemanticCMS News Taglib</documented.name>
     <documented.description>SemanticCMS newsfeeds in a JSP environment.</documented.description>
 
     <description.html><![CDATA[Documentation for <a target="${javadoc.target}" href="${project.url}">${documented.name}</a> in <a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> format.]]></description.html>
   </properties>
 
-  <name>SemanticCMS News Taglib² Book</name>
+  <name>SemanticCMS News Taglib Book</name>
   <url>https://semanticcms.com/news/taglib/</url>
-  <description>Documentation for SemanticCMS News Taglib² in SemanticCMS format.</description>
+  <description>Documentation for SemanticCMS News Taglib in SemanticCMS format.</description>
   <inceptionYear>2016</inceptionYear>
 
   <licenses>

@@ -1,6 +1,6 @@
 /*
  * semanticcms-news-taglib - SemanticCMS newsfeeds in a JSP environment.
- * Copyright (C) 2016, 2017, 2020, 2021, 2022  AO Industries, Inc.
+ * Copyright (C) 2016, 2017, 2020, 2021, 2022, 2023  AO Industries, Inc.
  *     support@aoindustries.com
  *     7262 Bull Pen Cir
  *     Mobile, AL 36695
@@ -60,46 +60,52 @@ import javax.servlet.jsp.PageContext;
  */
 public class NewsTag extends ElementTag<News> {
 
-  private ValueExpression book;
+  private ValueExpression bookExpr;
 
   public void setBook(ValueExpression book) {
-    this.book = book;
+    this.bookExpr = book;
   }
 
-  private ValueExpression page;
+  private ValueExpression pageExpr;
 
   public void setPage(ValueExpression page) {
-    this.page = page;
+    this.pageExpr = page;
   }
 
-  private ValueExpression element;
+  private ValueExpression elementExpr;
 
   public void setElement(ValueExpression element) {
-    this.element = element;
+    this.elementExpr = element;
   }
 
-  private ValueExpression view;
+  private ValueExpression viewExpr;
 
   public void setView(ValueExpression view) {
-    this.view = view;
+    this.viewExpr = view;
   }
 
-  private ValueExpression title;
+  private ValueExpression titleExpr;
 
   public void setTitle(ValueExpression title) {
-    this.title = title;
+    this.titleExpr = title;
   }
 
-  private ValueExpression description;
+  private ValueExpression descriptionExpr;
 
   public void setDescription(ValueExpression description) {
-    this.description = description;
+    this.descriptionExpr = description;
   }
 
-  private ValueExpression pubDate;
+  private ValueExpression pubDateExpr;
 
   public void setPubDate(ValueExpression pubDate) {
-    this.pubDate = pubDate;
+    this.pubDateExpr = pubDate;
+  }
+
+  private ValueExpression allowRobotsExpr;
+
+  public void setAllowRobots(ValueExpression allowRobots) {
+    this.allowRobotsExpr = allowRobots;
   }
 
   @Override
@@ -110,17 +116,38 @@ public class NewsTag extends ElementTag<News> {
   @Override
   protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
     super.evaluateAttributes(news, elContext);
-    news.setBook(resolveValue(book, String.class, elContext));
-    news.setTargetPage(resolveValue(page, String.class, elContext));
-    news.setElement(resolveValue(element, String.class, elContext));
-    String viewStr = nullIfEmpty(resolveValue(view, String.class, elContext));
+    news.setBook(resolveValue(bookExpr, String.class, elContext));
+    news.setTargetPage(resolveValue(pageExpr, String.class, elContext));
+    news.setElement(resolveValue(elementExpr, String.class, elContext));
+    String viewStr = nullIfEmpty(resolveValue(viewExpr, String.class, elContext));
     if (viewStr == null) {
       viewStr = SemanticCMS.DEFAULT_VIEW_NAME;
     }
     news.setView(viewStr);
-    news.setTitle(resolveValue(title, String.class, elContext));
-    news.setDescription(resolveValue(description, String.class, elContext));
-    news.setPubDate(PageUtils.toDateTime(resolveValue(pubDate, Object.class, elContext)));
+    news.setTitle(resolveValue(titleExpr, String.class, elContext));
+    news.setDescription(resolveValue(descriptionExpr, String.class, elContext));
+    news.setPubDate(PageUtils.toDateTime(resolveValue(pubDateExpr, Object.class, elContext)));
+    String allowRobotsStr = resolveValue(allowRobotsExpr, String.class, elContext);
+    Boolean allowRobots;
+    // Not using Boolean.valueOf to be more specific in parsing, "blarg" is not same as "false".
+    if (
+        allowRobotsStr == null
+            || (allowRobotsStr = allowRobotsStr.trim()).isEmpty()
+            || "auto".equalsIgnoreCase(allowRobotsStr)
+    ) {
+      allowRobots = null;
+    } else if ("true".equalsIgnoreCase(allowRobotsStr)) {
+      allowRobots = true;
+    } else if ("false".equalsIgnoreCase(allowRobotsStr)) {
+      allowRobots = false;
+    } else {
+      // Matches ao-tld-parser:XmlHelper.java
+      // Matches semanticcms-changelog-taglib:ReleaseTag.java
+      // Matches semanticcms-core-taglib:PageTag.java
+      // Matches semanticcms-news-taglib:NewsTag.java
+      throw new IllegalArgumentException("Unexpected value for allowRobots, expect one of \"auto\", \"true\", or \"false\": " + allowRobotsStr);
+    }
+    news.setAllowRobots(allowRobots);
   }
 
   private HttpServletRequest request;

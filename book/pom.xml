@@ -41,6 +41,10 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <documented.artifactId>semanticcms-news-taglib</documented.artifactId>
     <documented.name>SemanticCMS News Taglib</documented.name>
     <documented.description>SemanticCMS newsfeeds in a JSP environment.</documented.description>
+    <javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a>
+/ <a target="${javadoc.target}" href="https://semanticcms.com/news/">News</a>
+/ <a target="${javadoc.target}" href="${project.url}">Taglib</a>]]></javadoc.breadcrumbs>
+    <javadoc.taglibReference><![CDATA[<li><a target="${javadoc.target}" href="${project.url}semanticcms-news.tld/">Taglib Reference</a></li>]]></javadoc.taglibReference>
 
     <description.html><![CDATA[Documentation for <a target="${javadoc.target}" href="${project.url}">${documented.name}</a> in <a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a> format.]]></description.html>
     <!-- SonarQube -->

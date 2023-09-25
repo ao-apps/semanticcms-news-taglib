@@ -145,7 +145,7 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
             <configuration>
               <artifactItems>
                 <artifactItem>
-                  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+                  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0${POST-SNAPSHOT}</version>
                   <type>jar</type>
                   <includes>META-INF/semanticcms-news.tld</includes>
                 </artifactItem>
@@ -155,7 +155,7 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
         </executions>
         <dependencies>
           <dependency>
-            <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0-SNAPSHOT<!-- ${POST-SNAPSHOT} --></version>
+            <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0${POST-SNAPSHOT}</version>
             <type>jar</type>
             <exclusions><exclusion><groupId>*</groupId><artifactId>*</artifactId></exclusion></exclusions>
           </dependency>

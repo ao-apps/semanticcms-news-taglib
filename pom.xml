@@ -29,12 +29,12 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <relativePath>../../parent/pom.xml</relativePath>
   </parent>
 
-  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0-SNAPSHOT</version>
+  <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-taglib</artifactId><version>1.7.0</version>
   <packaging>jar</packaging>
 
   <properties>
     <!-- Must be set to ${git.commit.time} for snapshots or ISO 8601 timestamp for releases. -->
-    <project.build.outputTimestamp>${git.commit.time}</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2023-09-25T04:54:33Z</project.build.outputTimestamp>
     <module.name>com.semanticcms.news.taglib</module.name>
     <javadoc.breadcrumbs><![CDATA[<a target="${javadoc.target}" href="https://semanticcms.com/">SemanticCMS</a>
 / <a target="${javadoc.target}" href="https://semanticcms.com/news/">News</a>
@@ -79,7 +79,7 @@ along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>
     <connection>scm:git:git://github.com/ao-apps/semanticcms-news-taglib.git</connection>
     <developerConnection>scm:git:git@github.com:ao-apps/semanticcms-news-taglib.git</developerConnection>
     <url>https://github.com/ao-apps/semanticcms-news-taglib</url>
-    <tag>HEAD</tag>
+    <tag>semanticcms-news-taglib-1.7.0</tag>
   </scm>
 
   <issueManagement>

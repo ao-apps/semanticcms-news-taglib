@@ -24,7 +24,7 @@
 package com.semanticcms.news.taglib;
 
 import static com.aoapps.lang.Strings.nullIfEmpty;
-import static com.aoapps.taglib.AttributeUtils.resolveValue;
+import static com.aoapps.servlet.el.ElUtils.resolveValue;
 
 import com.aoapps.encoding.Doctype;
 import com.aoapps.encoding.Serialization;

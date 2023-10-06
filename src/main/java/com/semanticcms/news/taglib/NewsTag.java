@@ -123,7 +123,7 @@ public class NewsTag extends ElementTag<News> {
   }
 
   @Override
-  protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
+  protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException {
     try {
       super.evaluateAttributes(news, elContext);
       news.setDomain(

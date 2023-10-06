@@ -114,7 +114,7 @@ public class NewsTag extends ElementTag<News> {
   }
 
   @Override
-  protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException, IOException {
+  protected void evaluateAttributes(News news, ELContext elContext) throws JspTagException {
     super.evaluateAttributes(news, elContext);
     news.setBook(resolveValue(bookExpr, String.class, elContext));
     news.setTargetPage(resolveValue(pageExpr, String.class, elContext));

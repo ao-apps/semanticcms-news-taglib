@@ -24,7 +24,7 @@
 * [Changelog](https://semanticcms.com/news/taglib/changelog)
 * [Taglib Reference](https://semanticcms.com/news/taglib/semanticcms-news.tld/)
 * [API Docs](https://semanticcms.com/news/taglib/apidocs/)
-* [Maven Central Repository](https://central.sonatype.com/artifact/com.semanticcms/semanticcms-news-taglib)
+* [Central Repository](https://central.sonatype.com/artifact/com.semanticcms/semanticcms-news-taglib)
 * [GitHub](https://github.com/ao-apps/semanticcms-news-taglib)
 
 ## Contact Us

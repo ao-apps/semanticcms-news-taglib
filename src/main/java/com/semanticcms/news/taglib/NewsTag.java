@@ -26,11 +26,7 @@ package com.semanticcms.news.taglib;
 import static com.aoapps.lang.Strings.nullIfEmpty;
 import static com.aoapps.servlet.el.ElUtils.resolveValue;
 
-import com.aoapps.encoding.Doctype;
-import com.aoapps.encoding.Serialization;
-import com.aoapps.encoding.servlet.DoctypeEE;
-import com.aoapps.encoding.servlet.SerializationEE;
-import com.aoapps.html.Document;
+import com.aoapps.html.servlet.DocumentEE;
 import com.aoapps.lang.validation.ValidationException;
 import com.aoapps.net.DomainName;
 import com.aoapps.net.Path;
@@ -53,7 +49,6 @@ import jakarta.servlet.jsp.JspTagException;
 import jakarta.servlet.jsp.PageContext;
 import java.io.IOException;
 import java.io.Writer;
-import java.nio.charset.Charset;
 
 /**
  * A newsfeed item, used to annotate pages and elements of what
@@ -176,22 +171,18 @@ public class NewsTag extends ElementTag<News> {
     }
   }
 
+  private ServletContext servletContext;
   private HttpServletRequest request;
+  private HttpServletResponse response;
   private PageIndex pageIndex;
-  private Serialization serialization;
-  private Doctype doctype;
-  private Charset characterEncoding;
 
   @Override
   protected void doBody(News news, CaptureLevel captureLevel) throws JspException, IOException {
     PageContext pageContext = (PageContext) getJspContext();
-    ServletContext servletContext = pageContext.getServletContext();
-    final HttpServletResponse response = (HttpServletResponse) pageContext.getResponse();
+    servletContext = pageContext.getServletContext();
     request = (HttpServletRequest) pageContext.getRequest();
+    response = (HttpServletResponse) pageContext.getResponse();
     pageIndex = PageIndex.getCurrentPageIndex(request);
-    serialization = SerializationEE.get(servletContext, request);
-    doctype = DoctypeEE.get(servletContext, request);
-    characterEncoding = Charset.forName(response.getCharacterEncoding());
     super.doBody(news, captureLevel);
     try {
       NewsHtmlRenderer.doBodyImpl(servletContext, request, response, news);
@@ -204,9 +195,10 @@ public class NewsTag extends ElementTag<News> {
   public void writeTo(Writer out, ElementContext context) throws IOException, ServletException {
     NewsHtmlRenderer.writeNewsImpl(
         request,
-        new Document(serialization, doctype, characterEncoding, out)
-            .setAutonli(false)// Do not add extra newlines to JSP
-            .setIndent(false), // Do not add extra indentation to JSP
+        new DocumentEE(servletContext, request, response, out,
+            false, // Do not add extra newlines to JSP
+            false  // Do not add extra indentation to JSP
+        ),
         context,
         getElement(),
         pageIndex

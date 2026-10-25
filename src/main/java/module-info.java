@@ -21,7 +21,6 @@
  * along with semanticcms-news-taglib.  If not, see <https://www.gnu.org/licenses/>.
  */
 module com.semanticcms.news.taglib {
-  exports com.semanticcms.news.taglib;
   // Direct
   requires com.aoapps.html.any; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-any</artifactId>
   requires com.aoapps.html.servlet; // <groupId>com.aoapps</groupId><artifactId>ao-fluent-html-servlet</artifactId>
@@ -36,4 +35,6 @@ module com.semanticcms.news.taglib {
   requires com.semanticcms.core.taglib; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-core-taglib</artifactId>
   requires com.semanticcms.news.model; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-model</artifactId>
   requires com.semanticcms.news.servlet; // <groupId>com.semanticcms</groupId><artifactId>semanticcms-news-servlet</artifactId>
+
+  exports com.semanticcms.news.taglib;
 }
